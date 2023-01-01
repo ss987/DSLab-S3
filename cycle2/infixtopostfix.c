@@ -7,26 +7,21 @@ char stack[MAX];
 int top = -1;
 void stackFull()
 {
-	fprintf(stderr,"Stack full, cannot add element");
-	
+	fprintf(stderr,"Stack full, cannot add element");	
 }
 void stackEmpty()
 {
-	fprintf(stderr,"Stack empty");
-	
+	fprintf(stderr,"Stack empty");	
 }
 char pop()
-{
-	
+{	
 	if(top==-1)
 		stackEmpty();
 	else
-	return stack[top--];
-	
+	return stack[top--];	
 }
 void push(char item)
-{
-	
+{	
 	if (top>=MAX-1)
 		stackFull();
 	stack[++top]=item;
@@ -66,10 +61,8 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 	int i, j;
 	char item;
 	char x;
-
 	push('(');                               
-	strcat(infix_exp,")");                  
-
+	strcat(infix_exp,")");               
 	i=0;
 	j=0;
 	item=infix_exp[i];
@@ -78,8 +71,7 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 		if(item == '(')
 		{
 			push(item);
-		}
-		
+		}		
 		else if( isdigit(item) || isalpha(item))
 		{
 			postfix_exp[j] = item;              
@@ -94,9 +86,7 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 				j++;
 				x = pop();                       
 			}
-			push(x);
-			
-
+			push(x);	
 			push(item);                 
 		}
 		else if(item == ')')        
@@ -116,19 +106,14 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 			exit(1);
 		}
 		i++;
-
-
 		item = infix_exp[i]; 
-	}
-	
+	}	
 	if(top>0)
 	{
 		printf("\nInvalid infix Expression.\n");        
 		getchar();
 		exit(1);
 	}
-
-
 	postfix_exp[j] = '\0'; 
 }
 void main()
@@ -136,7 +121,6 @@ void main()
 	char infix[MAX], postfix[MAX];
 	printf("\nEnter Infix expression : ");
 	gets(infix);
-
 	InfixToPostfix(infix,postfix);                   
 	printf("Postfix Expression: ");
 	puts(postfix);                     
