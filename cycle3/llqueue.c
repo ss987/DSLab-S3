@@ -54,12 +54,11 @@ void display()
 	{
 		struct node* temp;
 		temp=front;
-		while(temp->next!=NULL)
+		while(temp!=NULL)
 		{
 			printf("%d\n",temp->data);
 			temp=temp->next;
 		}
-		printf("%d\n",temp->data);
 	}
 }
 void peek()
